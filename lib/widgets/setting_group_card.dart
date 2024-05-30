@@ -23,7 +23,9 @@ class SettingGroupCard extends StatelessWidget {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(24)),
       ),
-      color: selected ? Theme.of(context).colorScheme.surfaceVariant : null,
+      color: selected
+          ? Theme.of(context).colorScheme.surfaceContainerHighest
+          : null,
       clipBehavior: Clip.hardEdge,
       child: ListTile(
         leading: icon,

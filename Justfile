@@ -7,11 +7,6 @@ build-isar:
     @echo "Build Isar......."
     @flutter pub run build_runner build
 
-# Build capture file
-# build-capture:
-#     @cd capture_py && python3 -m pipenv install && python3 -m pipenv run pyinstaller --onefile --clean --strip capture.py
-#     @cp capture_py/dist/capture assets/capture/capture-{{VERSION}}
-
 # Build Linux deb package
 build-deb: build-isar
     @echo "------------------------------"

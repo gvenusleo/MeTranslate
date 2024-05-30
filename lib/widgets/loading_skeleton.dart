@@ -15,8 +15,8 @@ class _LoadingSkeletonState extends State<LoadingSkeleton> {
     final shimmerGradient = LinearGradient(
       colors: [
         Colors.transparent,
-        Theme.of(context).colorScheme.background.withAlpha(30),
-        Theme.of(context).colorScheme.background.withAlpha(30),
+        Theme.of(context).colorScheme.surface.withAlpha(30),
+        Theme.of(context).colorScheme.surface.withAlpha(30),
         Colors.transparent,
       ],
       stops: const [
@@ -42,7 +42,7 @@ class _LoadingSkeletonState extends State<LoadingSkeleton> {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color:
-                    Theme.of(context).colorScheme.surfaceVariant.withAlpha(80),
+                    Theme.of(context).colorScheme.surfaceContainerHighest.withAlpha(80),
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
@@ -52,7 +52,7 @@ class _LoadingSkeletonState extends State<LoadingSkeleton> {
               width: MediaQuery.of(context).size.width - 80,
               decoration: BoxDecoration(
                 color:
-                    Theme.of(context).colorScheme.surfaceVariant.withAlpha(80),
+                    Theme.of(context).colorScheme.surfaceContainerHighest.withAlpha(80),
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
