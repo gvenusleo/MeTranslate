@@ -4,7 +4,6 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   audioplayers_windows
-  bitsdojo_window_windows
   clipboard_watcher
   dynamic_color
   hotkey_manager_windows

@@ -9,11 +9,6 @@ environment:
 
 dependencies:
   audioplayers: ^6.0.0
-  bitsdojo_window: ^0.1.5
-  # bitsdojo_window 没有在 lib/ 中使用
-  # 在 linux/my_application.cc 中使用
-  # 作用是使窗口圆角处保持透明 (window_manager 无法实现)
-  # 以及调整窗口大小 (window_manager DragToResizeArea 可实现)
   clipboard_watcher: ^0.2.0
   crypto: ^3.0.3
   dio: ^5.3.2
@@ -56,8 +51,3 @@ flutter:
     - assets/logo.ico
     - assets/service/translation/
     - assets/service/ocr/
-
-  fonts:
-    - family: Sarasa-UI-SC
-      fonts:
-        - asset: assets/sarasa-ui-sc.ttf

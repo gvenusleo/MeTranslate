@@ -29,15 +29,15 @@ class MyApp extends StatelessWidget {
     return DynamicColorBuilder(builder: (lightDynamic, darkDynamic) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "Lex",
+        title: "lex",
         localizationsDelegates: const [
           GlobalWidgetsLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: const [
-          Locale("en"),
-          Locale("zh"),
+          Locale("en", "US"),
+          Locale("zh", "CN"),
         ],
         theme: buildLightTheme(lightDynamic, context),
         darkTheme: buildDarkTheme(darkDynamic, context),
@@ -47,14 +47,6 @@ class MyApp extends StatelessWidget {
           ThemeMode.dark
         ][context.watch<ThemeProvider>().themeMode],
         home: const HomePage(),
-        builder: (context, child) {
-          return ClipRRect(
-            borderRadius: BorderRadius.circular(
-              prefs.getBool("useRoundedWindow") ?? true ? 12 : 0,
-            ),
-            child: child,
-          );
-        },
       );
     });
   }

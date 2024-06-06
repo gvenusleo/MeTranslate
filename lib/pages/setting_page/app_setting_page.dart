@@ -26,7 +26,6 @@ class _AppSettingPageState extends State<AppSettingPage> {
   late double _windowOpacity;
   // 窗口是非跟随鼠标
   late bool _windowFllowCursor;
-  late bool _useRoundedWindow;
   // 是否开机自启动
   bool _launchAtStartup = false;
   // 启动时隐藏窗口
@@ -47,7 +46,6 @@ class _AppSettingPageState extends State<AppSettingPage> {
     });
     _windowOpacity = prefs.getDouble("windowOpacity") ?? 1.0;
     _windowFllowCursor = prefs.getBool("windowFollowCursor") ?? false;
-    _useRoundedWindow = prefs.getBool("useRoundedWindow") ?? true;
     _hideWindowAtStartup = prefs.getBool("hideWindowAtStartup") ?? false;
     _proxyAddressController.text = _proxyAddress;
     super.initState();
@@ -78,7 +76,7 @@ class _AppSettingPageState extends State<AppSettingPage> {
             title: const Text("全局字体"),
             subtitle: const Text("设置应用界面字体"),
             trailing: Text(
-              context.watch<ThemeProvider>().fontFamily == "Sarasa-UI-SC"
+              context.watch<ThemeProvider>().fontFamily == "system"
                   ? "默认字体"
                   : context.watch<ThemeProvider>().fontFamily.split(".").first,
               style: const TextStyle(fontSize: 16),
@@ -128,18 +126,6 @@ class _AppSettingPageState extends State<AppSettingPage> {
             secondary: const Icon(Icons.window_outlined),
             title: const Text("窗口跟随鼠标"),
             subtitle: const Text("划词翻译时窗口跟随鼠标"),
-          ),
-          SwitchListTile(
-            value: _useRoundedWindow,
-            onChanged: (value) async {
-              setState(() {
-                _useRoundedWindow = value;
-              });
-              prefs.setBool("useRoundedWindow", value);
-            },
-            secondary: const Icon(Icons.rounded_corner_rounded),
-            title: const Text("使用圆角窗口"),
-            subtitle: const Text("重启应用后生效"),
           ),
           SwitchListTile(
             value: _launchAtStartup,
@@ -262,7 +248,7 @@ class _AppSettingPageState extends State<AppSettingPage> {
   /// 设置全局字体
   Future<void> setGlobalFont() async {
     List<String> fonts = await readAllFont();
-    fonts.insert(0, "Sarasa-UI-SC");
+    fonts.insert(0, "system");
     if (!mounted) return;
     showDialog(
       context: context,
@@ -277,7 +263,7 @@ class _AppSettingPageState extends State<AppSettingPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ...fonts.map((e) {
-                  if (e == "Sarasa-UI-SC") {
+                  if (e == "system") {
                     return RadioListTile(
                       value: e,
                       groupValue: context.watch<ThemeProvider>().fontFamily,
@@ -309,7 +295,7 @@ class _AppSettingPageState extends State<AppSettingPage> {
                         if (context.read<ThemeProvider>().fontFamily == e) {
                           context
                               .read<ThemeProvider>()
-                              .changeFontFamily("Sarasa-UI-SC");
+                              .changeFontFamily("system");
                         }
                         await deleteFont(e);
                         setFontState(() {
@@ -333,7 +319,7 @@ class _AppSettingPageState extends State<AppSettingPage> {
                         await loadLocalFont();
                         readAllFont().then((value) {
                           fonts = value;
-                          fonts.insert(0, "Sarasa-UI-SC");
+                          fonts.insert(0, "system");
                           setFontState(() {});
                         });
                       },

@@ -7,7 +7,6 @@
 #include "generated_plugin_registrant.h"
 
 #include <audioplayers_windows/audioplayers_windows_plugin.h>
-#include <bitsdojo_window_windows/bitsdojo_window_plugin.h>
 #include <clipboard_watcher/clipboard_watcher_plugin.h>
 #include <dynamic_color/dynamic_color_plugin_c_api.h>
 #include <hotkey_manager_windows/hotkey_manager_windows_plugin_c_api.h>
@@ -22,8 +21,6 @@
 void RegisterPlugins(flutter::PluginRegistry* registry) {
   AudioplayersWindowsPluginRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("AudioplayersWindowsPlugin"));
-  BitsdojoWindowPluginRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("BitsdojoWindowPlugin"));
   ClipboardWatcherPluginRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("ClipboardWatcherPlugin"));
   DynamicColorPluginCApiRegisterWithRegistrar(
